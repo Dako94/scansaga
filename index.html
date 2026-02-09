@@ -2,160 +2,763 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scansaga | La tua Libreria Digitale</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Scansaga 📚 | Libreria Digitale Intelligente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --netflix-red: #E50914;
-            --dark-bg: #141414;
-            --text-light: #f5f5f5;
+            --primary: #E50914;
+            --primary-dark: #B20710;
+            --primary-glow: #ff4757;
+            --dark: #0A0A0A;
+            --dark-card: #1A1A1A;
+            --dark-light: #2A2A2A;
+            --text: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent: #00C2FF;
+            --success: #00D95F;
+            --gradient: linear-gradient(135deg, #E50914 0%, #B20710 50%, #8B0000 100%);
+            --card-gradient: linear-gradient(145deg, #1E1E1E 0%, #151515 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+            --radius: 20px;
+            --radius-sm: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at top, #1A1A1A 0%, #0A0A0A 70%);
+            padding-bottom: env(safe-area-inset-bottom);
         }
 
+        /* Header con effetto glass */
         header {
-            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            z-index: 1000;
+            padding: 20px 5%;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: var(--gradient);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
         }
 
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--netflix-red);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
         }
 
+        .beta-badge {
+            background: linear-gradient(45deg, var(--accent), #0099FF);
+            color: white;
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 60px 20px;
-            max-width: 800px;
+            padding: 140px 5% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        h1 {
-            font-size: 3rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(229, 9, 20, 0.15) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 194, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #FFFFFF, #FFD0D0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        p {
-            font-size: 1.2rem;
-            color: #b3b3b3;
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
             margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
+        /* Phone Mockup */
+        .phone-mockup {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            margin: 40px auto;
+            background: var(--card-gradient);
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #0F0F0F;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-content {
+            padding: 20px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .app-logo {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .book-cover {
+            aspect-ratio: 2/3;
+            background: linear-gradient(45deg, #2A2A2A, #3A3A3A);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-cover:nth-child(1) {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+        }
+        .book-cover:nth-child(2) {
+            background: linear-gradient(45deg, #4ECDC4, #44A08D);
+        }
+        .book-cover:nth-child(3) {
+            background: linear-gradient(45deg, #FFD166, #FFB347);
+        }
+        .book-cover:nth-child(4) {
+            background: linear-gradient(45deg, #06D6A0, #0CB48A);
+        }
+        .book-cover:nth-child(5) {
+            background: linear-gradient(45deg, #118AB2, #0A6A8A);
+        }
+        .book-cover:nth-child(6) {
+            background: linear-gradient(45deg, #EF476F, #D43A5F);
+        }
+
+        .stats-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        /* Button Styles */
         .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            align-items: center;
+            gap: 16px;
+            max-width: 320px;
+            margin: 0 auto 60px;
         }
 
         .btn {
-            background-color: var(--netflix-red);
-            color: white;
-            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 22px 30px;
+            border-radius: 18px;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            transition: transform 0.2s, background 0.2s;
-            width: 250px;
+            font-weight: 700;
+            font-size: 17px;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn:hover {
-            background-color: #ff0a16;
-            transform: scale(1.05);
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 25px rgba(229, 9, 20, 0.4);
+        }
+
+        .btn-primary:hover, .btn-primary:active {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(229, 9, 20, 0.5);
         }
 
         .btn-secondary {
-            background-color: #333;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .btn-secondary:hover, .btn-secondary:active {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            font-size: 20px;
+        }
+
+        .btn-download {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Features */
         .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 50px 20px;
-            width: 90%;
-            max-width: 1000px;
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .features-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .feature-card {
-            background: #1f1f1f;
-            padding: 30px;
-            border-radius: 8px;
-            border-bottom: 3px solid var(--netflix-red);
+            background: var(--card-gradient);
+            border-radius: var(--radius);
+            padding: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .feature-card h3 {
-            margin-top: 0;
-            color: var(--netflix-red);
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .feature-1 .feature-icon { background: linear-gradient(135deg, #FF6B6B, #FF8E53); }
+        .feature-2 .feature-icon { background: linear-gradient(135deg, #4ECDC4, #44A08D); }
+        .feature-3 .feature-icon { background: linear-gradient(135deg, #FFD166, #FFB347); }
+        .feature-4 .feature-icon { background: linear-gradient(135deg, #06D6A0, #0CB48A); }
+
+        .feature-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-content p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 5%;
+            background: rgba(0, 0, 0, 0.3);
+            margin: 40px 0;
+            border-radius: 30px;
+            margin: 40px 5%;
+        }
+
+        .testimonial-card {
+            background: var(--dark-card);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+        }
+
+        /* CTA */
+        .cta {
+            padding: 80px 5%;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(229, 9, 20, 0.05) 100%);
+            margin-top: 40px;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Footer */
         footer {
-            margin-top: 50px;
-            padding: 30px;
-            color: #666;
-            font-size: 0.9rem;
+            padding: 40px 5% 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
         }
 
-        .badge {
-            display: inline-block;
-            background: #333;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 52px;
+            }
+            
+            .btn-container {
+                flex-direction: row;
+                max-width: 100%;
+            }
+            
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-
+    <!-- Header -->
     <header>
-        <div class="logo">Scansaga</div>
+        <div class="logo-container">
+            <div class="logo-icon">S</div>
+            <div class="logo-text">Scansaga</div>
+            <div class="beta-badge">BETA 2.0</div>
+        </div>
+        <div class="download-badge">
+            <i class="fas fa-download"></i>
+        </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="badge">BETA V1.0 DISPONIBILE</div>
-        <h1>Organizza la tua libreria fisica in un tocco.</h1>
-        <p>Scansiona i tuoi libri, tieni traccia delle tue letture e scopri nuove anteprime con l'interfaccia più fluida di sempre.</p>
+        <h1>La tua libreria<br>nella tua tasca</h1>
+        <p>Scannerizza, organizza e goditi i tuoi libri con un'interfaccia Netflix-style. Tutto in un'app.</p>
         
+        <!-- Phone Mockup -->
+        <div class="phone-mockup floating">
+            <div class="phone-screen">
+                <div class="screen-content">
+                    <div class="app-header">
+                        <div class="app-logo">Scansaga</div>
+                        <div style="color: var(--text-secondary);">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="book-grid">
+                        <div class="book-cover"></div>
+                        <div class="book-cover"></div>
+                        <div class="book-cover"></div>
+                        <div class="book-cover"></div>
+                        <div class="book-cover"></div>
+                        <div class="book-cover"></div>
+                    </div>
+                    
+                    <div style="color: white; margin-bottom: 20px;">
+                        <div style="font-weight: 700; font-size: 18px;">I tuoi progressi</div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">3 libri letti questa settimana</div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <div class="stats-row">
+                            <span style="color: var(--text-secondary);">Libri totali</span>
+                            <span style="font-weight: 700;">127</span>
+                        </div>
+                        <div class="stats-row">
+                            <span style="color: var(--text-secondary);">In lettura</span>
+                            <span style="color: var(--accent); font-weight: 700;">3</span>
+                        </div>
+                        <div class="stats-row">
+                            <span style="color: var(--text-secondary);">Completati</span>
+                            <span style="color: var(--success); font-weight: 700;">42</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Download Buttons -->
         <div class="btn-container">
-            <a href="LINK_AL_TUO_APK" class="btn">SCARICA APK (Android)</a>
-            <a href="https://t.me/TUO_CANALE" class="btn btn-secondary">Unisciti su Telegram</a>
+            <a href="LINK_AL_TUO_APK" class="btn btn-primary">
+                <i class="fas fa-download"></i>
+                SCARICA L'APP
+                <span class="btn-download">Android APK • 45MB</span>
+            </a>
+            <a href="https://t.me/TUO_CANALE" class="btn btn-secondary">
+                <i class="fab fa-telegram"></i>
+                COMMUNITY TELEGRAM
+            </a>
         </div>
     </section>
 
-    <div class="features">
-        <div class="feature-card">
-            <h3>Scanner Rapido</h3>
-            <p>Punta il codice a barre e lascia che Scansaga faccia il resto.</p>
+    <!-- Features -->
+    <section class="features">
+        <h2 class="section-title">Perché Scansaga?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card feature-1">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Scanner Istantaneo</h3>
+                    <p>Aggiungi libri in 2 secondi puntando il codice a barre. Supporto per ISBN automatico.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card feature-2">
+                <div class="feature-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Netflix-style</h3>
+                    <p>Naviga nella tua libreria con un'interfaccia cinematografica e fluida come Netflix.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card feature-3">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Statistiche Dettagliate</h3>
+                    <p>Monitora pagine lette, tempo di lettura, generi preferiti e molto altro.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card feature-4">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Cloud Sync</h3>
+                    <p>I tuoi dati sono al sicuro e sincronizzati su tutti i tuoi dispositivi.</p>
+                </div>
+            </div>
         </div>
-        <div class="feature-card">
-            <h3>Stile Netflix</h3>
-            <p>Naviga tra i tuoi libri con un'interfaccia moderna e dinamica.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Progresso Lettura</h3>
-            <p>Non perdere mai il segno. Monitora le pagine lette in tempo reale.</p>
-        </div>
-    </div>
+    </section>
 
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">Cosa dicono i lettori</h2>
+        
+        <div class="testimonial-card">
+            <div class="testimonial-text">
+                "Finalmente un'app che rende l'organizzazione della libreria un piacere. La scansione è precisa al 100% e l'interfaccia è stupenda!"
+            </div>
+            <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div>
+                    <div style="font-weight: 700;">Marco R.</div>
+                    <div style="color: var(--text-secondary); font-size: 14px;">342 libri catalogati</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonial-card">
+            <div class="testimonial-text">
+                "Da lettore accanito, Scansaga ha rivoluzionato il mio modo di tenere traccia delle letture. Le statistiche sono fantastiche!"
+            </div>
+            <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div>
+                    <div style="font-weight: 700;">Laura B.</div>
+                    <div style="color: var(--text-secondary); font-size: 14px;">Appassionata di fantasy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta">
+        <h2>Pronto a rivoluzionare<br>la tua libreria?</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 40px;">Unisciti a migliaia di lettori soddisfatti</p>
+        <a href="LINK_AL_TUO_APK" class="btn btn-primary" style="max-width: 320px; margin: 0 auto;">
+            <i class="fas fa-rocket"></i>
+            INIZIA ORA - GRATIS
+        </a>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        &copy; 2026 Scansaga Project. Sviluppato con Flutter.
+        <div class="social-links">
+            <a href="#" class="social-link">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="#" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 Scansaga Project. Sviluppato con ❤️ e Flutter.</p>
+            <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">Versione 2.0 • Ottimizzato per mobile</p>
+        </div>
     </footer>
 
+    <script>
+        // Aggiunge effetti di hover migliorati
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aggiunge ripple effect ai bottoni
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size/2;
+                    const y = e.clientY - rect.top - size/2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.7);
+                        transform: scale(0);
+                        animation: ripple-animation 0.6s linear;
+                        width: ${size}px;
+                        height: ${size}px;
+                        top: ${y}px;
+                        left: ${x}px;
+                        pointer-events: none;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+            
+            // Animazione per le feature cards al scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s, transform 0.5s';
+                observer.observe(card);
+            });
+            
+            // Contatore animato per le statistiche
+            const statElements = document.querySelectorAll('.stats-row span:last-child');
+            statElements.forEach(stat => {
+                const finalValue = parseInt(stat.textContent);
+                let currentValue = 0;
+                const increment = finalValue / 50;
+                const timer = setInterval(() => {
+                    currentValue += increment;
+                    if (currentValue >= finalValue) {
+                        currentValue = finalValue;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(currentValue);
+                }, 30);
+            });
+        });
+        
+        // Aggiunge stile per l'animazione ripple
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
